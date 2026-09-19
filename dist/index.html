@@ -127,6 +127,19 @@
     .medal.bronze { color: #724b2b; background: #f2e4d5; }
     .mentor { margin: 9px 0 0; color: var(--muted); font-size: 14px; }
     .result-note { display: inline-block; margin-top: 7px; color: #876f37; font-size: 13px; font-weight: 700; }
+    .archive-achievement { margin-top: 42px; padding: 28px 30px; background: var(--gold-pale); border: 1px solid #ded4ba; }
+    .archive-heading { display: flex; justify-content: space-between; gap: 24px; align-items: start; }
+    .archive-heading h3 { margin: 5px 0 0; font-size: 22px; }
+    .archive-heading time { color: var(--muted); font-size: 13px; white-space: nowrap; }
+    .archive-stats { display: grid; grid-template-columns: repeat(4, 1fr); margin: 24px 0; border: 1px solid #ded4ba; background: var(--white); }
+    .archive-stat { padding: 15px 16px; border-right: 1px solid #ded4ba; }
+    .archive-stat:last-child { border-right: 0; }
+    .archive-stat strong { display: block; color: var(--navy); font-size: 21px; }
+    .archive-stat span { color: var(--muted); font-size: 13px; }
+    .archive-results { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .archive-result { padding-top: 15px; border-top: 1px solid #cabd9d; }
+    .archive-result strong { display: block; color: var(--navy); }
+    .archive-result p { margin: 7px 0 0; color: #566174; font-size: 14px; }
 
     .sports { background: var(--soft); border-block: 1px solid var(--line); }
     .sports-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
@@ -251,6 +264,13 @@
       .rank-main { padding: 24px 20px; }
       .achievement-row { grid-template-columns: 1fr; gap: 12px; padding: 21px 0; }
       .winner-line { align-items: flex-start; }
+      .archive-achievement { padding: 22px 18px; }
+      .archive-heading { display: block; }
+      .archive-heading time { display: block; margin-top: 6px; }
+      .archive-stats { grid-template-columns: 1fr 1fr; }
+      .archive-stat:nth-child(2) { border-right: 0; }
+      .archive-stat:nth-child(-n+2) { border-bottom: 1px solid #ded4ba; }
+      .archive-results { grid-template-columns: 1fr; }
       .sport-card { padding: 22px 18px; }
       .sport-card-head { display: block; }
       .sport-card-head span { display: block; margin-top: 5px; }
@@ -372,6 +392,22 @@
             </div>
           </article>
         </div>
+        <aside class="archive-achievement" aria-label="Архив достижений за 2023 год">
+          <div class="archive-heading">
+            <div><span class="label">Жетістіктер архиві · 2023–2024</span><h3>Ғылыми жобалар конкурсының қалалық кезеңі</h3></div>
+            <time datetime="2023-12-01">01.12.2023</time>
+          </div>
+          <div class="archive-stats" aria-label="Итоги конкурса">
+            <div class="archive-stat"><strong>3</strong><span>I орын</span></div>
+            <div class="archive-stat"><strong>7</strong><span>II орын</span></div>
+            <div class="archive-stat"><strong>3</strong><span>III орын</span></div>
+            <div class="archive-stat"><strong>2</strong><span>грамота</span></div>
+          </div>
+          <div class="archive-results">
+            <div class="archive-result"><strong>Орыс тілі секциясы</strong><p>Укасов Айбек — III орын. Жетекшісі: Пернебаева Б.</p><p>Жанатай Нұрсұлтан — грамота. Нұрғұн Ақсұңқар және Жұматов Қанат — грамота.</p></div>
+            <div class="archive-result"><strong>Ағылшын тілі секциясы</strong><p>Омар Жанибек және Ақжол Айдар — II орын. Жетекшісі: Ашырова Ш.</p></div>
+          </div>
+        </aside>
       </div>
     </section>
 
