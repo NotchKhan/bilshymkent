@@ -97,23 +97,50 @@
     .hero-fact strong { color: var(--navy); font-size: 15px; }
 
     .quick-info { border-bottom: 1px solid var(--line); }
-    .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
     .quick-item { padding: 22px 28px; border-right: 1px solid var(--line); }
     .quick-item:first-child { padding-left: 0; }
     .quick-item:last-child { border-right: 0; }
     .quick-item strong { display: block; color: var(--navy); font-size: 18px; }
     .quick-item span { color: var(--muted); font-size: 14px; }
 
-    .news-list { border-top: 1px solid var(--line); }
-    .news-item {
-      display: grid; grid-template-columns: 120px 1fr auto; gap: 24px; align-items: start;
-      padding: 24px 0; border-bottom: 1px solid var(--line); text-decoration: none;
+    .rank-banner {
+      display: grid; grid-template-columns: 1.4fr .6fr; align-items: stretch;
+      margin-bottom: 38px; background: var(--navy); color: var(--white);
     }
-    .news-item time, .news-type { color: var(--muted); font-size: 14px; }
-    .news-item h3 { margin: 0 0 6px; font-size: 20px; }
-    .news-item p { margin: 0; color: var(--muted); }
-    .news-arrow { color: var(--navy); font-size: 20px; }
-    .news-item:hover h3 { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+    .rank-main { padding: 30px 34px; }
+    .rank-main span { color: #d5c89f; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .rank-main strong { display: block; max-width: 720px; margin-top: 8px; font-size: clamp(25px, 3.4vw, 40px); line-height: 1.15; }
+    .rank-city { display: grid; place-content: center; padding: 26px; background: #182f54; text-align: center; }
+    .rank-city strong { display: block; color: #e2d4a7; font-size: 34px; line-height: 1; }
+    .rank-city span { display: block; margin-top: 7px; color: #d9e1ec; font-size: 14px; }
+    .achievement-list { border-top: 1px solid var(--line); }
+    .achievement-row { display: grid; grid-template-columns: 220px 1fr; gap: 34px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .achievement-subject strong { display: block; color: var(--navy); font-size: 17px; }
+    .achievement-subject span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; }
+    .winner + .winner { margin-top: 12px; }
+    .winner-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+    .winner-line strong { color: var(--navy); font-size: 17px; }
+    .winner-line > span:not(.medal) { color: var(--muted); }
+    .medal { min-width: 76px; display: inline-block; padding: 4px 9px; border-radius: 4px; font-size: 13px; font-weight: 700; text-align: center; }
+    .medal.silver { color: #475467; background: #eceff3; }
+    .medal.bronze { color: #724b2b; background: #f2e4d5; }
+    .mentor { margin: 9px 0 0; color: var(--muted); font-size: 14px; }
+    .result-note { display: inline-block; margin-top: 7px; color: #876f37; font-size: 13px; font-weight: 700; }
+
+    .sports { background: var(--soft); border-block: 1px solid var(--line); }
+    .sports-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .sport-card { padding: 28px; background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--navy); }
+    .sport-card-head { display: flex; justify-content: space-between; gap: 20px; align-items: start; }
+    .sport-card h3 { margin: 0; font-size: 22px; }
+    .sport-card-head span { color: var(--muted); font-size: 13px; white-space: nowrap; }
+    .team-place { margin: 24px 0; padding: 18px 0; border-block: 1px solid var(--line); }
+    .team-place strong { display: block; color: var(--navy); font-size: 28px; line-height: 1.15; }
+    .team-place span { color: var(--muted); }
+    .nomination { display: grid; grid-template-columns: 160px 1fr; gap: 12px; padding-top: 10px; }
+    .nomination + .nomination { margin-top: 6px; }
+    .nomination span { color: var(--muted); font-size: 14px; }
+    .nomination strong { color: var(--navy); font-size: 14px; }
 
     .about { background: var(--soft); border-block: 1px solid var(--line); }
     .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; }
@@ -193,6 +220,12 @@
       .hero-grid { gap: 32px; }
       .about-grid { grid-template-columns: 1fr; gap: 34px; }
       .schedule-box { grid-template-columns: 1fr; }
+      .quick-grid { grid-template-columns: repeat(2, 1fr); }
+      .quick-item:nth-child(2) { border-right: 0; }
+      .quick-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .rank-banner { grid-template-columns: 1fr; }
+      .rank-city { min-height: 130px; }
+      .sports-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
@@ -215,10 +248,13 @@
       .quick-item:last-child { border-bottom: 0; }
       .section-head { display: block; }
       .section-head p { margin-top: 14px; }
-      .news-item { grid-template-columns: 1fr auto; gap: 8px 16px; padding: 20px 0; }
-      .news-item time { grid-column: 1; }
-      .news-item > div { grid-column: 1; }
-      .news-arrow { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+      .rank-main { padding: 24px 20px; }
+      .achievement-row { grid-template-columns: 1fr; gap: 12px; padding: 21px 0; }
+      .winner-line { align-items: flex-start; }
+      .sport-card { padding: 22px 18px; }
+      .sport-card-head { display: block; }
+      .sport-card-head span { display: block; margin-top: 5px; }
+      .nomination { grid-template-columns: 1fr; gap: 2px; }
       .value-row { grid-template-columns: 28px 1fr; }
       .value-row span { grid-column: 2; }
       .schedule-list { padding: 5px 18px; }
@@ -256,7 +292,8 @@
       </a>
       <nav aria-label="Основная навигация">
         <a href="#about">О лицее</a>
-        <a href="#news">Новости</a>
+        <a href="#achievements">Жетістіктер</a>
+        <a href="#sports">Спорт</a>
         <a href="#schedule">Распорядок</a>
         <a href="#students">Ученикам</a>
         <a href="#contacts">Контакты</a>
@@ -280,7 +317,7 @@
           <div class="hero-fact"><span>Тип</span><strong>Лицей-интернат</strong></div>
           <div class="hero-fact"><span>Город</span><strong>Шымкент</strong></div>
           <div class="hero-fact"><span>Обучение</span><strong>Полиязычная среда</strong></div>
-          <div class="hero-fact"><span>Направление</span><strong>Олимпиады и проекты</strong></div>
+          <div class="hero-fact"><span>Рейтинг</span><strong>№20 по Казахстану · №1 в Шымкенте</strong></div>
         </aside>
       </div>
     </section>
@@ -288,33 +325,74 @@
     <div class="quick-info">
       <div class="wrap quick-grid">
         <div class="quick-item"><strong>с 1993 года</strong><span>история лицея в Шымкенте</span></div>
-        <div class="quick-item"><strong>4 языка</strong><span>казахский, русский, английский, турецкий</span></div>
-        <div class="quick-item"><strong>ТОП-100</strong><span>по итогам 2025–2026 учебного года</span></div>
+        <div class="quick-item"><strong>№20 в Казахстане</strong><span>олимпиадалық мектептер рейтингі</span></div>
+        <div class="quick-item"><strong>№1 в Шымкенте</strong><span>2025–2026 оқу жылының қорытындысы</span></div>
+        <div class="quick-item"><strong>11 медалей</strong><span>за прошлый учебный год</span></div>
       </div>
     </div>
 
-    <section id="news">
+    <section id="achievements">
       <div class="wrap">
         <div class="section-head">
-          <div><span class="label">Новости</span><h2>События лицея</h2></div>
-          <p>Достижения учеников и важные объявления. Полная лента публикуется на официальной странице школы.</p>
+          <div><span class="label">Өткен оқу жылы · 2025–2026</span><h2>Республикалық олимпиада қорытындысы</h2></div>
+          <p>Өткен 2025–2026 оқу жылындағы республикалық пән олимпиадаларының жүлдегерлері.</p>
         </div>
-        <div class="news-list">
-          <a class="news-item" href="https://ontustiktv.kz/ru/news/62334" target="_blank" rel="noopener noreferrer">
-            <time datetime="2026-06-04">04.06.2026</time>
-            <div><h3>Лицей — среди лидеров национального рейтинга</h3><p>Школа вошла в число лучших общеобразовательных организаций Казахстана по результатам республиканской олимпиады.</p></div>
-            <span class="news-arrow" aria-hidden="true">↗</span>
-          </a>
-          <a class="news-item" href="https://otyrar.kz/2026/03/shymkentskie-shkolniki-zavoevali-nagrady-na-respublikanskoj-olimpiade/" target="_blank" rel="noopener noreferrer">
-            <time datetime="2026-03-28">28.03.2026</time>
-            <div><h3>Призовые места на республиканской олимпиаде</h3><p>Ученики лицея получили награды по математике и информатике на заключительном этапе олимпиады.</p></div>
-            <span class="news-arrow" aria-hidden="true">↗</span>
-          </a>
-          <a class="news-item" href="https://shymkentboysktl.edupage.org/" target="_blank" rel="noopener noreferrer">
-            <span class="news-type">Объявления</span>
-            <div><h3>Актуальные события и школьные новости</h3><p>Даты мероприятий, результаты конкурсов и объявления администрации доступны на странице лицея.</p></div>
-            <span class="news-arrow" aria-hidden="true">↗</span>
-          </a>
+        <div class="rank-banner">
+          <div class="rank-main"><span>Өткен оқу жылы · 2025–2026</span><strong>Қазақстанның ең үздік TOP-100 олимпиадалық мектебі · №20 орын</strong></div>
+          <div class="rank-city"><strong>TOP 1</strong><span>Шымкент бойынша</span></div>
+        </div>
+        <div class="achievement-list">
+          <article class="achievement-row">
+            <div class="achievement-subject"><strong>Ағылшын тілі</strong><span>Петропавл</span></div>
+            <div><div class="winner"><div class="winner-line"><span class="medal bronze">Қола · III</span><strong>Талғарбек Абай</strong><span>III дәрежелі диплом</span></div></div><p class="mentor">Жетекшісі: Жунисова Венера Абдигалиевна</p></div>
+          </article>
+          <article class="achievement-row">
+            <div class="achievement-subject"><strong>Орыс тілі және әдебиеті</strong><span>Шымкент</span></div>
+            <div><div class="winner"><div class="winner-line"><span class="medal bronze">Қола · III</span><strong>Бердіхан Али</strong><span>III дәрежелі диплом</span></div><span class="result-note">9-сынып оқушысы, 11-сынып атынан қатысты</span></div><p class="mentor">Жетекшісі: Абеева Перизат Садуакаскызы</p></div>
+          </article>
+          <article class="achievement-row">
+            <div class="achievement-subject"><strong>Қазақстан тарихы</strong><span>Тараз</span></div>
+            <div><div class="winner"><div class="winner-line"><span class="medal silver">Күміс · II</span><strong>Алиханбар Ербол</strong><span>II дәрежелі диплом</span></div></div><div class="winner"><div class="winner-line"><span class="medal silver">Күміс · II</span><strong>Қалу Дастан</strong><span>II дәрежелі диплом</span></div></div><p class="mentor">Жетекшісі: Темірхан Мақсат Әсетұлы</p></div>
+          </article>
+          <article class="achievement-row">
+            <div class="achievement-subject"><strong>География</strong><span>Алматы</span></div>
+            <div><div class="winner"><div class="winner-line"><span class="medal bronze">Қола · III</span><strong>Бабайхан Дәулет</strong><span>III дәрежелі диплом</span></div></div><p class="mentor">Жетекшісі: Усипбаева Еркежан</p></div>
+          </article>
+          <article class="achievement-row">
+            <div class="achievement-subject"><strong>Физика</strong><span>Астана</span></div>
+            <div><div class="winner"><div class="winner-line"><span class="medal bronze">Қола · III</span><strong>Алмасхан Арсен</strong><span>III дәрежелі диплом</span></div></div><div class="winner"><div class="winner-line"><span class="medal bronze">Қола · III</span><strong>Назарбай Мерей</strong><span>III дәрежелі диплом</span></div></div><p class="mentor">Жетекшісі: Божкенова Айгерім</p></div>
+          </article>
+          <article class="achievement-row">
+            <div class="achievement-subject"><strong>Математика және информатика</strong><span>Республикалық олимпиада</span></div>
+            <div>
+              <div class="winner"><div class="winner-line"><span class="medal silver">Күміс · II</span><strong>Разақұлов Бақберген</strong><span>Информатика</span></div></div>
+              <div class="winner"><div class="winner-line"><span class="medal silver">Күміс · II</span><strong>Қалмырза Бақдаулет</strong><span>Математика</span></div></div>
+              <div class="winner"><div class="winner-line"><span class="medal bronze">Қола · III</span><strong>Базаралы Абдулла</strong><span>Математика</span></div></div>
+              <div class="winner"><div class="winner-line"><span class="medal bronze">Қола · III</span><strong>Аманов Сұлтанбек</strong><span>Математика</span></div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sports" id="sports">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="label">Спорттық жетістіктер</span><h2>Республикалық жарыстар</h2></div>
+          <p>Командалық орындар және Шымкент БИЛ оқушыларының жеке номинациялары.</p>
+        </div>
+        <div class="sports-grid">
+          <article class="sport-card">
+            <div class="sport-card-head"><h3>Волейбол</h3><span>Алматы · 2026</span></div>
+            <div class="team-place"><strong>🥉 3 орын</strong><span>Шымкент БИЛ командасы</span></div>
+            <div class="nomination"><span>Үздік үлестіруші</span><strong>Абек Жанарыс</strong></div>
+          </article>
+          <article class="sport-card">
+            <div class="sport-card-head"><h3>Баскетбол</h3><span>Республикалық турнир · 2026</span></div>
+            <div class="team-place"><strong>🥈 2 орын</strong><span>Шымкент БИЛ командасы</span></div>
+            <div class="nomination"><span>Ең шебер ойыншы</span><strong>Паржан Әлихан</strong></div>
+            <div class="nomination"><span>Жанкешті ойыншы</span><strong>Эрдоған Мелих</strong></div>
+          </article>
         </div>
       </div>
     </section>
