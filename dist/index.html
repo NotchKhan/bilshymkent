@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10264a">
+  <meta name="description" content="Страница лицея-интерната №1 «Білім-Инновация» для юношей в Шымкенте: о лицее, распорядок дня, учебная неделя и инструменты для самостоятельной работы.">
+  <title>Шымкент БИЛ №1 — лицей-интернат для юношей</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%2310264a' d='M32 3 56 12v18c0 15-9 25-24 31C17 55 8 45 8 30V12z'/%3E%3Cpath fill='%23d9a441' d='M19 20h26v6H35v21h-6V26H19z'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #10264a;
+      --ink-2: #1b3a67;
+      --gold: #d9a441;
+      --gold-soft: #f5ead0;
+      --paper: #f6f8fb;
+      --white: #ffffff;
+      --text: #17243a;
+      --muted: #60708a;
+      --line: #dce3ed;
+      --success: #1d6a4b;
+      --shadow: 0 20px 45px rgba(16, 38, 74, .09);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .skip {
+      position: fixed; left: 12px; top: -80px; z-index: 50;
+      background: var(--white); color: var(--ink); padding: 12px 16px;
+      border-radius: 8px; box-shadow: var(--shadow);
+    }
+    .skip:focus { top: 12px; }
+
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .topbar {
+      min-height: 72px; display: flex; align-items: center; gap: 28px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 252px; }
+    .mark {
+      width: 42px; height: 48px; flex: 0 0 auto; display: grid; place-items: center;
+      color: var(--white); background: var(--ink); font-family: Georgia, serif;
+      font-weight: 700; letter-spacing: -.04em; clip-path: polygon(50% 0, 100% 18%, 100% 61%, 50% 100%, 0 61%, 0 18%);
+    }
+    .brand strong { display: block; color: var(--ink); font-size: 15px; line-height: 1.2; }
+    .brand small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+    nav { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+    nav a {
+      text-decoration: none; font-size: 14px; font-weight: 650; color: #41516a;
+      padding: 10px 11px; border-radius: 9px; white-space: nowrap;
+    }
+    nav a:hover, nav a:focus-visible { color: var(--ink); background: #eef2f7; outline: none; }
+    .top-action {
+      text-decoration: none; background: var(--ink); color: var(--white); font-weight: 750;
+      padding: 11px 15px; border-radius: 10px; white-space: nowrap; font-size: 14px;
+    }
+    .top-action:hover, .top-action:focus-visible { background: var(--ink-2); outline: 3px solid rgba(217,164,65,.35); }
+
+    main { overflow: hidden; }
+    .hero { background: var(--ink); color: var(--white); }
+    .hero-inner {
+      display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(310px, .75fr);
+      gap: 54px; padding: 74px 0 64px; position: relative;
+    }
+    .hero-inner::after {
+      content: "01"; position: absolute; right: 0; bottom: -39px;
+      font-family: Georgia, serif; font-size: 210px; line-height: 1; font-weight: 700;
+      color: rgba(255,255,255,.035); pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; color: #f2d58f;
+      font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .13em;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gold); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 790px; margin: 18px 0 22px; font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 6.5vw, 76px); line-height: .98; letter-spacing: -.04em;
+      font-weight: 700;
+    }
+    .lead { max-width: 690px; color: #dbe5f2; font-size: clamp(17px, 2vw, 20px); line-height: 1.55; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
+      min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 13px 18px; border-radius: 10px; text-decoration: none; font-weight: 800;
+      border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--gold); color: #172033; }
+    .btn-primary:hover, .btn-primary:focus-visible { background: #e8bb5b; outline: 3px solid rgba(255,255,255,.18); }
+    .btn-ghost { border-color: rgba(255,255,255,.28); color: var(--white); }
+    .btn-ghost:hover, .btn-ghost:focus-visible { background: rgba(255,255,255,.08); outline: none; }
+    .arrow { font-size: 19px; line-height: 1; }
+
+    .hero-card {
+      align-self: end; position: relative; z-index: 1; padding: 28px;
+      border: 1px solid rgba(255,255,255,.18); border-top: 4px solid var(--gold);
+      background: rgba(255,255,255,.075); border-radius: 4px 4px 18px 18px;
+    }
+    .hero-card-label { color: #bfcde0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .today-word { margin: 7px 0 3px; font: 700 36px/1.1 Georgia, serif; color: #f5d88e; }
+    .hero-card p { color: #dbe5f2; margin-bottom: 20px; }
+    .mini-steps { display: grid; gap: 10px; }
+    .mini-step { display: grid; grid-template-columns: 36px 1fr; align-items: center; gap: 10px; font-size: 14px; }
+    .mini-step b { display: grid; place-items: center; height: 30px; background: rgba(255,255,255,.1); border-radius: 7px; color: #f2d58f; }
+
+    .facts { background: var(--white); border-bottom: 1px solid var(--line); }
+    .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .fact { padding: 22px 24px; border-right: 1px solid var(--line); }
+    .fact:first-child { padding-left: 0; }
+    .fact:last-child { border-right: 0; }
+    .fact strong { display: block; color: var(--ink); font-size: 17px; }
+    .fact span { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+    section { padding: 82px 0; scroll-margin-top: 100px; }
+    .section-head { display: grid; grid-template-columns: .55fr 1.45fr; gap: 52px; margin-bottom: 36px; align-items: start; }
+    .kicker { color: var(--gold); font-size: 13px; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    h2 { color: var(--ink); font: 700 clamp(31px, 4.2vw, 49px)/1.06 Georgia, serif; letter-spacing: -.03em; margin: 9px 0 0; }
+    .section-head p { color: var(--muted); font-size: 18px; max-width: 680px; margin: 20px 0 0; }
+
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+    .panel { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .story { padding: clamp(24px, 4vw, 42px); }
+    .story p { font-size: 18px; }
+    .story p:last-child { margin-bottom: 0; color: var(--muted); }
+    .principles { display: grid; gap: 1px; overflow: hidden; background: var(--line); }
+    .principle { background: var(--white); padding: 24px 26px; }
+    .principle-no { color: var(--gold); font: 700 13px/1 Georgia, serif; letter-spacing: .08em; }
+    .principle strong { display: block; margin: 5px 0 4px; color: var(--ink); font-size: 17px; }
+    .principle span { color: var(--muted); font-size: 14px; }
+
+    .day-section { background: var(--white); border-block: 1px solid var(--line); }
+    .timeline {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+    }
+    .time-block { position: relative; min-height: 206px; padding: 27px 24px; border-right: 1px solid var(--line); background: var(--white); }
+    .time-block:last-child { border-right: 0; }
+    .time-block time { color: var(--gold); font-weight: 850; letter-spacing: .04em; }
+    .time-block h3 { color: var(--ink); font: 700 23px/1.2 Georgia, serif; margin: 13px 0 8px; }
+    .time-block p { color: var(--muted); font-size: 14px; margin: 0; }
+    .time-block::after { content: ""; position: absolute; left: 24px; bottom: 0; width: 42px; height: 4px; background: var(--gold); }
+    .day-note {
+      display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px; margin-top: 18px;
+      border-radius: 12px; background: #f3f6fa; color: var(--muted); font-size: 14px;
+    }
+    .day-note b { color: var(--ink); white-space: nowrap; }
+
+    .week { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    details { background: var(--white); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    details[open] { border-color: #c2cede; box-shadow: 0 12px 28px rgba(16, 38, 74, .07); }
+    summary {
+      min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      padding: 18px 20px; cursor: pointer; list-style: none; color: var(--ink); font-weight: 800;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--gold); font-size: 24px; line-height: 1; font-weight: 500; }
+    details[open] summary::after { content: "−"; }
+    .day-name { display: block; }
+    .day-focus { display: block; color: var(--muted); font-size: 13px; font-weight: 600; margin-top: 2px; }
+    .day-body { border-top: 1px solid var(--line); padding: 18px 20px 21px; }
+    .day-body ul { margin: 0; padding-left: 20px; color: var(--muted); }
+    .day-body li + li { margin-top: 7px; }
+
+    .culture {
+      background: var(--ink); color: var(--white); padding: 70px 0;
+    }
+    .culture h2 { color: var(--white); }
+    .culture .section-head p { color: #c7d3e3; }
+    .word-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .word-card { padding: 28px; border: 1px solid rgba(255,255,255,.18); border-radius: 16px; background: rgba(255,255,255,.055); }
+    .word-card strong { display: block; color: #f2d58f; font: 700 30px/1.1 Georgia, serif; }
+    .word-card span { display: block; color: #c7d3e3; margin-top: 10px; }
+
+    .focus-card {
+      display: grid; grid-template-columns: 1.2fr .8fr; overflow: hidden;
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .focus-copy { padding: clamp(28px, 5vw, 52px); }
+    .focus-copy h2 { margin-bottom: 18px; }
+    .focus-copy p { color: var(--muted); font-size: 18px; max-width: 650px; }
+    .focus-copy .btn { background: var(--ink); color: var(--white); margin-top: 8px; }
+    .focus-copy .btn:hover, .focus-copy .btn:focus-visible { background: var(--ink-2); outline: 3px solid rgba(217,164,65,.38); }
+    .focus-list { background: var(--gold-soft); padding: 36px; display: grid; align-content: center; gap: 12px; }
+    .focus-list div { display: flex; gap: 12px; align-items: flex-start; font-weight: 700; color: var(--ink); }
+    .focus-list b { display: grid; place-items: center; flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--gold); font-size: 13px; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .contact-card { padding: 32px; }
+    .contact-card h3 { color: var(--ink); font: 700 25px/1.2 Georgia, serif; margin-bottom: 20px; }
+    .contact-row { padding: 14px 0; border-top: 1px solid var(--line); }
+    .contact-row small { display: block; color: var(--muted); font-size: 13px; }
+    .contact-row strong, .contact-row a { display: inline-block; color: var(--ink); font-size: 17px; font-weight: 750; text-decoration: none; margin-top: 3px; }
+    .contact-row a:hover { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+    .source-list { margin: 0; padding-left: 20px; color: var(--muted); }
+    .source-list li + li { margin-top: 9px; }
+    .source-list a { color: var(--ink-2); text-underline-offset: 3px; }
+
+    footer { background: #0a1a34; color: #b9c6d8; padding: 28px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 28px; font-size: 13px; }
+    .footer-inner strong { color: var(--white); }
+    .footer-note { text-align: right; max-width: 620px; }
+
+    @media (max-width: 940px) {
+      .topbar { align-items: flex-start; padding: 12px 0 10px; flex-wrap: wrap; gap: 10px; }
+      .brand { min-width: 0; }
+      .top-action { margin-left: auto; }
+      nav {
+        order: 3; width: 100%; margin-left: 0; overflow-x: auto; padding-bottom: 2px;
+        scrollbar-width: none;
+      }
+      nav::-webkit-scrollbar { display: none; }
+      nav a { background: #f3f6fa; }
+      .hero-inner { grid-template-columns: 1fr; gap: 34px; padding: 58px 0; }
+      .hero-card { max-width: 620px; }
+      .facts-grid { grid-template-columns: repeat(2, 1fr); }
+      .fact:nth-child(2) { border-right: 0; }
+      .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .fact:nth-child(3) { padding-left: 0; }
+      .section-head { grid-template-columns: 1fr; gap: 0; }
+      .about-grid, .focus-card, .contact-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: repeat(2, 1fr); }
+      .time-block:nth-child(2) { border-right: 0; }
+      .time-block:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .week, .word-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+      .topbar { min-height: 0; }
+      .brand small { display: none; }
+      .mark { width: 36px; height: 41px; }
+      .top-action { padding: 10px 12px; }
+      .hero-inner { padding: 46px 0 44px; }
+      h1 { font-size: clamp(40px, 13vw, 56px); }
+      .lead { font-size: 17px; }
+      .hero-actions { display: grid; }
+      .btn { width: 100%; }
+      .hero-card { padding: 22px; }
+      .hero-inner::after { display: none; }
+      .facts-grid { grid-template-columns: 1fr 1fr; }
+      .fact { padding: 18px 14px; }
+      .fact:nth-child(3) { padding-left: 0; }
+      .fact strong { font-size: 15px; }
+      section { padding: 62px 0; }
+      .section-head { margin-bottom: 28px; }
+      .section-head p { font-size: 16px; }
+      .about-grid { gap: 14px; }
+      .story p { font-size: 16px; }
+      .timeline { grid-template-columns: 1fr; }
+      .time-block { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); padding: 23px 20px 26px; }
+      .time-block:last-child { border-bottom: 0; }
+      .time-block:nth-child(2) { border-bottom: 1px solid var(--line); }
+      .day-note { display: block; }
+      .day-note b { display: block; margin-bottom: 4px; }
+      .week, .word-grid { grid-template-columns: 1fr; }
+      summary { min-height: 68px; }
+      .culture { padding: 58px 0; }
+      .focus-list { padding: 26px; }
+      .contact-card { padding: 24px; }
+      .footer-inner { display: block; }
+      .footer-note { text-align: left; margin-top: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Перейти к содержанию</a>
+
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="#top" aria-label="На главную">
+        <span class="mark" aria-hidden="true">БІЛ</span>
+        <span><strong>Шымкент БИЛ №1</strong><small>лицей-интернат для юношей</small></span>
+      </a>
+      <nav aria-label="Основная навигация">
+        <a href="#about">О лицее</a>
+        <a href="#day">Распорядок</a>
+        <a href="#week">Неделя</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <a class="top-action" href="https://focusbase.vercel.app/#focus" target="_blank" rel="noopener noreferrer">FocusBase ↗</a>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="top">
+      <div class="wrap hero-inner">
+        <div>
+          <span class="eyebrow">Шымкент · Білім-Инновация</span>
+          <h1>Знание. Характер. Братство.</h1>
+          <p class="lead">Лицей-интернат №1 для юношей — учебная среда, где сильная академическая подготовка соединяется с ответственностью, уважением и жизнью одной школьной командой.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://focusbase.vercel.app/#focus" target="_blank" rel="noopener noreferrer">Начать чалыш в FocusBase <span class="arrow">↗</span></a>
+            <a class="btn btn-ghost" href="#day">Посмотреть распорядок <span class="arrow">↓</span></a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Фокус дня">
+          <span class="hero-card-label">Формула учебного дня</span>
+          <div class="today-word">Çalış</div>
+          <p>Не ждать вдохновения — начать с одного спокойного учебного блока.</p>
+          <div class="mini-steps">
+            <div class="mini-step"><b>1</b><span>Выбери один предмет</span></div>
+            <div class="mini-step"><b>2</b><span>Убери отвлекающее</span></div>
+            <div class="mini-step"><b>3</b><span>Заверши блок коротким итогом</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="facts" aria-label="Кратко о лицее">
+      <div class="wrap facts-grid">
+        <div class="fact"><strong>с 1993 года</strong><span>история лицея в Шымкенте</span></div>
+        <div class="fact"><strong>лицей-интернат</strong><span>учёба и школьная жизнь вместе</span></div>
+        <div class="fact"><strong>4 языка</strong><span>казахский, русский, английский, турецкий</span></div>
+        <div class="fact"><strong>топ школ страны</strong><span>по итогам 2025–2026 учебного года</span></div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">О лицее</span><h2>Среда, которая держит планку</h2></div>
+          <p>Шымкентский БИЛ №1 для юношей вырос из казахско-турецкого лицея, открытого в 1993 году. Сегодня это лицей-интернат с сильной олимпиадной культурой, полиязычным обучением и вниманием к воспитанию личности.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel story">
+            <p>Здесь учебный день не заканчивается последним звонком: после уроков идут кружки, спортивные занятия и вечерний этюд. Жизнь в интернате учит планировать время, отвечать за свои решения и поддерживать товарищей.</p>
+            <p>В 2025–2026 учебном году лицей вошёл в число 100 лучших школ Казахстана по результатам республиканской олимпиады.</p>
+          </article>
+          <div class="panel principles" aria-label="Ценности лицея">
+            <div class="principle"><span class="principle-no">01</span><strong>Ответственность</strong><span>Слово, срок и результат имеют значение.</span></div>
+            <div class="principle"><span class="principle-no">02</span><strong>Самосовершенствование</strong><span>Каждый день — небольшой шаг выше вчерашнего уровня.</span></div>
+            <div class="principle"><span class="principle-no">03</span><strong>Сотрудничество</strong><span>Сильный класс растёт, когда ребята помогают друг другу.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-section" id="day">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Учебный день</span><h2>Ритм интерната</h2></div>
+          <p>Понятная структура помогает успевать главное: учиться, отдыхать, двигаться и сохранять порядок. Ниже — ориентировочный ритм буднего дня.</p>
+        </div>
+        <div class="timeline">
+          <article class="time-block"><time>07:00–08:00</time><h3>Подъём и завтрак</h3><p>Утренний порядок, сборы, завтрак и готовность к занятиям.</p></article>
+          <article class="time-block"><time>08:00–15:00</time><h3>Уроки</h3><p>Основная программа, лабораторные работы и учебные перемены.</p></article>
+          <article class="time-block"><time>15:30–18:00</time><h3>Кружки и спорт</h3><p>Олимпиадная подготовка, проекты, секции и командная работа.</p></article>
+          <article class="time-block"><time>19:00–21:00</time><h3>Etüt / Этюд</h3><p>Самостоятельная подготовка, домашние задания и чтение.</p></article>
+        </div>
+        <div class="day-note"><b>Важно:</b><span>точное время уроков, питания, кружков и отбоя устанавливает администрация лицея; этот блок — удобная модель дня для планирования.</span></div>
+      </div>
+    </section>
+
+    <section id="week">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Вся неделя</span><h2>Учёба без хаоса</h2></div>
+          <p>Каждый день имеет свой акцент. Нажмите на день, чтобы посмотреть спокойный план для учёбы и жизни в общежитии.</p>
+        </div>
+        <div class="week">
+          <details open><summary><span><span class="day-name">Понедельник</span><span class="day-focus">План недели</span></span></summary><div class="day-body"><ul><li>Определить 3 главные задачи</li><li>Разобрать сложные темы на этюде</li><li>Подготовить форму и материалы на вторник</li></ul></div></details>
+          <details><summary><span><span class="day-name">Вторник</span><span class="day-focus">Глубокий чалыш</span></span></summary><div class="day-body"><ul><li>Сделать один длинный фокус-блок</li><li>Олимпиадная или проектная работа</li><li>Короткая взаимопроверка с товарищем</li></ul></div></details>
+          <details><summary><span><span class="day-name">Среда</span><span class="day-focus">Середина дистанции</span></span></summary><div class="day-body"><ul><li>Проверить прогресс недели</li><li>Закрыть учебные долги</li><li>Спорт и восстановление</li></ul></div></details>
+          <details><summary><span><span class="day-name">Четверг</span><span class="day-focus">Командная работа</span></span></summary><div class="day-body"><ul><li>Совместный разбор задач</li><li>Работа над презентациями и проектами</li><li>Подготовка к итоговым проверкам</li></ul></div></details>
+          <details><summary><span><span class="day-name">Пятница</span><span class="day-focus">Итоги и тост</span></span></summary><div class="day-body"><ul><li>Завершить обязательные задания</li><li>Подвести итоги недели</li><li>Поблагодарить тех, кто помог</li></ul></div></details>
+          <details><summary><span><span class="day-name">Суббота</span><span class="day-focus">Кружки и порядок</span></span></summary><div class="day-body"><ul><li>Факультативы и секции по плану</li><li>Порядок в комнате и личных вещах</li><li>Чтение, спорт и отдых</li></ul></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="culture" aria-labelledby="culture-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Свои слова</span><h2 id="culture-title">Коротко. По-лицейски.</h2></div>
+          <p>Знакомые слова, за которыми стоит общий ритм: сосредоточиться, доработать и отметить результат вместе.</p>
+        </div>
+        <div class="word-grid">
+          <article class="word-card"><strong>Çalış · Чалыш</strong><span>Сесть и сделать: спокойно, собранно, без лишних отвлечений.</span></article>
+          <article class="word-card"><strong>Etüt · Этюд</strong><span>Время самостоятельной подготовки, когда знания становятся своими.</span></article>
+          <article class="word-card"><strong>Tost · Тост</strong><span>Тёплый момент команды: поблагодарить, поддержать, отметить общий результат.</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="focus">
+      <div class="wrap">
+        <div class="focus-card">
+          <div class="focus-copy">
+            <span class="kicker">Инструмент ученика</span>
+            <h2>Начни чалыш прямо сейчас</h2>
+            <p>FocusBase помогает выделить время на одну задачу и не отвлекаться. Открой режим фокуса перед этюдом, выбери предмет и работай до сигнала.</p>
+            <a class="btn" href="https://focusbase.vercel.app/#focus" target="_blank" rel="noopener noreferrer">Открыть FocusBase <span class="arrow">↗</span></a>
+          </div>
+          <div class="focus-list" aria-label="Как использовать FocusBase">
+            <div><b>1</b><span>Выбери одну конкретную задачу</span></div>
+            <div><b>2</b><span>Поставь учебный интервал</span></div>
+            <div><b>3</b><span>После сигнала запиши результат</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Контакты</span><h2>Лицей в Шымкенте</h2></div>
+          <p>Официальные контактные данные школы по информации фонда «Білім-Инновация».</p>
+        </div>
+        <div class="contact-grid">
+          <article class="panel contact-card">
+            <h3>Связаться с лицеем</h3>
+            <div class="contact-row"><small>Адрес</small><strong>г. Шымкент, ул. Адырбекова, 135</strong></div>
+            <div class="contact-row"><small>Телефон</small><a href="tel:+77252321156">+7 (7252) 32-11-56</a></div>
+            <div class="contact-row"><small>Страница школы</small><a href="https://shymkentboysktl.edupage.org/" target="_blank" rel="noopener noreferrer">shymkentboysktl.edupage.org ↗</a></div>
+          </article>
+          <article class="panel contact-card">
+            <h3>Проверенные источники</h3>
+            <ul class="source-list">
+              <li><a href="https://bil.edu.kz/?lang=ru" target="_blank" rel="noopener noreferrer">Международный общественный фонд «Білім-Инновация»</a></li>
+              <li><a href="https://www.gov.kz/memleket/entities/shymkent/press/news/details/1232069?lang=ru" target="_blank" rel="noopener noreferrer">Управление образования города Шымкента: рейтинг школ</a></li>
+              <li><a href="https://shymkentboysktl.edupage.org/" target="_blank" rel="noopener noreferrer">Страница Шымкентского БИЛ для юношей</a></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>Шымкент БИЛ №1</strong><br>Білім · Тәрбие · Болашақ</div>
+      <div class="footer-note">Информационный концепт страницы. Ориентировочный распорядок необходимо уточнять у администрации лицея.</div>
+    </div>
+  </footer>
+</body>
+</html>
