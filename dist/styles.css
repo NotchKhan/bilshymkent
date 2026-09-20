@@ -18,3 +18,11 @@
 @media(min-width:701px) and (max-width:1049px){.catalog-art{height:92px}}
 @media(max-width:700px){.hero-copy{padding:4.5%}.hero-copy p{margin-bottom:14px}}
 @media(max-width:430px){.hero{min-height:218px}.hero-copy{padding:16px 15px}.hero h1{font-size:24px;margin-bottom:10px}.hero-copy p{margin-bottom:12px}}
+.slider-controls{right:14px;bottom:14px;gap:0;padding:2px;background:#fff;color:#172c42;border:1px solid #e4eaf0;border-radius:26px;box-shadow:0 3px 14px #12293d20;backdrop-filter:none;z-index:2}
+.slider-controls button{display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:0 0 44px;padding:0;color:#172c42;background:transparent;border-radius:50%;touch-action:manipulation}
+.slider-controls button:hover{background:#eef4fc;color:#1b62ce}
+.slider-controls button:active{background:#ddeafb}
+.slider-controls button:focus-visible{outline-offset:-3px}
+.slider-controls .icon{width:20px;height:20px;display:block}
+.slider-controls span{min-width:38px;font-size:14px;font-weight:600;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:380px){.hero{min-height:270px}.hero-copy{padding-bottom:72px}.slider-controls{right:12px;bottom:12px}}
