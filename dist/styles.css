@@ -1,0 +1,320 @@
+:root { --navy:#0d1d39; --text:#202b3d; --muted:#616c7c; --line:#e1e5eb; --soft:#f6f7f9; --white:#fff; --max:1100px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:150px; }
+    body { margin:0; background:var(--white); color:var(--text); font-family:Arial,"Segoe UI",sans-serif; font-size:16px; line-height:1.55; }
+    a { color:inherit; } img { max-width:100%; }
+    a:focus-visible { outline:3px solid #8ca5c9; outline-offset:4px; }
+    .wrap { width:min(calc(100% - 40px),var(--max)); margin-inline:auto; }
+    .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+    .skip { position:fixed; top:-80px; left:12px; z-index:50; padding:12px; background:white; }
+    .skip:focus { top:12px; }
+    .contact-strip { background:var(--navy); color:#dbe3ef; font-size:13px; }
+    .contact-strip .wrap { min-height:36px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .contact-strip a { text-decoration:none; }
+    header { position:sticky; top:0; z-index:20; background:white; border-bottom:1px solid var(--line); }
+    .header-inner { min-height:88px; display:flex; align-items:center; gap:24px; }
+    .brand { display:flex; align-items:center; gap:14px; min-width:320px; text-decoration:none; }
+    .brand img { width:72px; height:54px; object-fit:contain; flex:0 0 auto; }
+    .brand strong { display:block; color:var(--navy); font-size:15px; line-height:1.3; }
+    .brand span span { display:block; margin-top:3px; color:var(--muted); font-size:13px; }
+    nav { margin-left:auto; display:flex; align-items:center; gap:2px; }
+    nav a { padding:12px 10px; color:#344054; text-decoration:none; border-radius:5px; font-size:14px; font-weight:600; white-space:nowrap; }
+    nav a:hover { background:var(--soft); }
+    section { padding:56px 0; border-bottom:1px solid var(--line); }
+    h1,h2,h3,p { margin-top:0; }
+    h2 { margin:0; color:var(--navy); font-size:28px; line-height:1.25; font-weight:600; letter-spacing:normal; }
+    h3 { color:var(--navy); font-size:20px; font-weight:600; }
+    .section-head { display:flex; justify-content:space-between; align-items:baseline; gap:24px; margin-bottom:28px; }
+    .section-head p { color:var(--muted); margin:0; font-size:14px; }
+    .directory { background:var(--soft); padding:40px 0 44px; }
+    .home-ranks { display:flex; flex-wrap:wrap; gap:28px 64px; }
+    .home-ranks > div { display:flex; align-items:baseline; gap:12px; }
+    .home-ranks strong { color:var(--navy); font-size:38px; font-weight:600; line-height:1.2; }
+    .home-ranks span { color:var(--navy); font-size:20px; }
+    .ranking-caption { margin:10px 0 28px; color:var(--muted); font-size:14px; }
+    .directory-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .directory-link { display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:96px; padding:24px; background:white; border:1px solid #d8dee7; border-radius:7px; text-decoration:none; color:var(--navy); font-size:19px; font-weight:600; }
+    .directory-link span:last-child { color:#788596; font-weight:400; font-size:18px; }
+    .directory-link:hover { border-color:#8d9caf; background:#fbfcfd; }
+    .achievement-list { border-top:1px solid var(--line); }
+    .achievement-row { display:grid; grid-template-columns:220px minmax(0,1fr); gap:30px; padding:22px 0; border-bottom:1px solid var(--line); }
+    .achievement-subject strong { display:block; color:var(--navy); font-size:16px; }
+    .achievement-subject span { display:block; margin-top:4px; color:var(--muted); font-size:13px; }
+    .winner + .winner { margin-top:12px; }
+    .winner-line { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; }
+    .winner-line strong { font-size:16px; }
+    .winner-line > span:not(.medal) { color:var(--muted); font-size:14px; }
+    .medal { min-width:76px; display:inline-block; padding:3px 8px; border-radius:3px; font-size:13px; font-weight:600; text-align:center; }
+    .silver { background:#edf0f4; color:#485669; }
+    .bronze { background:#f2e9df; color:#755538; }
+    .mentor { margin:9px 0 0; color:var(--muted); font-size:14px; }
+    .result-note { display:block; margin-top:7px; color:var(--muted); font-size:13px; }
+    .archive-achievement { margin-top:34px; padding:24px; background:var(--soft); border:1px solid var(--line); }
+    .archive-heading { display:flex; justify-content:space-between; gap:20px; }
+    .label,.archive-heading time { color:var(--muted); font-size:13px; }
+    .archive-heading h3 { margin:5px 0 0; }
+    .archive-heading time { white-space:nowrap; }
+    .archive-stats { display:grid; grid-template-columns:repeat(4,1fr); margin:20px 0; border-block:1px solid var(--line); }
+    .archive-stat { padding:12px; }
+    .archive-stat strong { font-size:21px; display:block; }
+    .archive-stat span { color:var(--muted); font-size:13px; }
+    .archive-results { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+    .archive-result p { margin:7px 0 0; color:var(--muted); font-size:14px; }
+    .sports-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+    .sport-card { border:1px solid var(--line); padding:24px; }
+    .sport-card-head { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+    .sport-card h3 { margin:0; }
+    .sport-card-head span { color:var(--muted); font-size:13px; }
+    .team-place { margin:18px 0; padding:16px 0; border-block:1px solid var(--line); }
+    .team-place strong { display:block; font-size:24px; }
+    .team-place span { color:var(--muted); }
+    .nomination { display:grid; grid-template-columns:160px 1fr; gap:12px; padding-top:10px; font-size:14px; }
+    .nomination span { color:var(--muted); }
+    .about-grid { display:grid; grid-template-columns:1fr 2fr; gap:40px; }
+    .about-copy p { margin-bottom:14px; }
+    .about-copy p:last-child { margin-bottom:0; }
+    .schedule-box { display:grid; grid-template-columns:1.3fr .7fr; border:1px solid var(--line); }
+    .schedule-list { padding:6px 24px; }
+    .schedule-row { display:grid; grid-template-columns:120px minmax(0,1fr); gap:20px; padding:16px 0; border-bottom:1px solid var(--line); }
+    .schedule-row:last-child { border-bottom:0; }
+    .schedule-row time { color:var(--navy); font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums; }
+    .schedule-row strong { display:block; font-weight:600; }
+    .schedule-row span { display:block; color:var(--muted); font-size:14px; margin-top:3px; }
+    .week-box { padding:24px; background:var(--soft); }
+    .week-row { padding:12px 0; border-bottom:1px solid var(--line); }
+    .week-row strong,.week-row span { display:block; font-size:14px; }
+    .week-row span { color:var(--muted); }
+    .week-note { margin:20px 0 0; color:var(--muted); font-size:13px; }
+    .student-layout { display:grid; grid-template-columns:1fr 2fr; gap:40px; }
+    .student-links { border-top:1px solid var(--line); }
+    .resource { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:16px; align-items:center; padding:18px 0; border-bottom:1px solid var(--line); text-decoration:none; }
+    .resource strong { display:block; font-size:16px; font-weight:600; }
+    .resource span span { display:block; color:var(--muted); font-size:14px; margin-top:3px; }
+    .resource > b { font-weight:400; color:var(--muted); }
+    .resource:hover strong { text-decoration:underline; text-underline-offset:4px; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+    .contact-card { border-top:1px solid var(--line); padding-top:20px; }
+    .contact-card h3 { margin-bottom:16px; }
+    .contact-line { padding:12px 0; border-bottom:1px solid var(--line); overflow-wrap:anywhere; }
+    .contact-line small { display:block; color:var(--muted); font-size:13px; }
+    .contact-line strong,.contact-line a { display:inline-block; margin-top:3px; font-weight:600; text-decoration:none; }
+    .source-list { margin:0; padding-left:20px; font-size:14px; }
+    .source-list li + li { margin-top:12px; }
+    .source-list a { text-underline-offset:3px; }
+    footer { padding:24px 0; background:var(--navy); color:#c7d1df; font-size:13px; }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:30px; }
+    .footer-brand { display:flex; align-items:center; gap:12px; }
+    .footer-brand img { width:56px; height:40px; object-fit:contain; background:white; }
+    .footer-brand strong { display:block; color:white; }
+    .footer-note { max-width:500px; text-align:right; }
+    @media(max-width:1100px) {
+      .header-inner { flex-wrap:wrap; gap:8px; padding:10px 0; }
+      .brand { min-width:0; }
+      nav { width:100%; margin-left:0; overflow-x:auto; scrollbar-width:none; padding:2px 0; }
+      nav::-webkit-scrollbar { display:none; }
+      nav a { background:var(--soft); }
+    }
+    @media(max-width:800px) {
+      .schedule-box,.student-layout,.about-grid { grid-template-columns:1fr; gap:24px; }
+      .schedule-box { gap:0; }
+      .sports-grid { grid-template-columns:1fr; }
+      .section-head { display:block; }
+      .section-head p { margin-top:8px; }
+    }
+    @media(max-width:640px) {
+      .wrap { width:calc(100% - 32px); }
+      .contact-strip .wrap { min-height:30px; }
+      .contact-strip span { display:none; }
+      .brand { gap:10px; }
+      .brand img { width:58px; height:44px; }
+      .brand strong { font-size:14px; }
+      .brand span span { font-size:12px; }
+      section { padding:36px 0; }
+      h2 { font-size:24px; }
+      .directory { padding:28px 0 32px; }
+      .home-ranks { gap:12px 28px; }
+      .home-ranks > div { display:block; }
+      .home-ranks strong { display:block; font-size:32px; }
+      .home-ranks span { font-size:16px; }
+      .ranking-caption { margin:12px 0 22px; font-size:13px; }
+      .directory-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+      .directory-link { min-height:78px; padding:16px 14px; font-size:16px; line-height:1.35; }
+      .directory-link span:first-child { overflow-wrap:anywhere; }
+      .achievement-row { grid-template-columns:1fr; gap:12px; padding:20px 0; }
+      .archive-achievement { padding:18px; }
+      .archive-heading { display:block; }
+      .archive-heading time { display:block; margin-top:6px; }
+      .archive-results,.contact-grid { grid-template-columns:1fr; }
+      .archive-stats { grid-template-columns:1fr 1fr; }
+      .sport-card { padding:20px; }
+      .nomination { grid-template-columns:1fr; gap:2px; }
+      .schedule-list { padding:4px 14px; }
+      .schedule-row { grid-template-columns:108px minmax(0,1fr); gap:12px; font-size:14px; }
+      .schedule-row span { font-size:14px; }
+      .week-box { padding:20px; }
+      .footer-inner { display:block; }
+      .footer-note { margin-top:18px; text-align:left; }
+    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  
+/* Shared page layout and section directory */
+:root { --max:1080px; --accent:#273f63; }
+body { background:#fafbfC; }
+header { position:relative; }
+.header-inner { min-height:94px; flex-wrap:nowrap; justify-content:space-between; }
+.brand { min-width:0; }
+.brand strong { font-size:17px; }
+.brand span span { font-size:13px; }
+.site-menu { position:relative; flex-shrink:0; }
+.site-menu summary { display:flex; align-items:center; gap:12px; cursor:pointer; padding:12px 16px; border:1px solid var(--line); border-radius:6px; font-size:14px; list-style:none; background:#fff; }
+.site-menu summary::-webkit-details-marker { display:none; }
+.site-menu summary::after { content:"☰"; font-size:17px; }
+.site-menu[open] summary { background:var(--soft); }
+.site-menu nav { position:absolute; top:calc(100% + 8px); right:0; width:240px; display:grid; background:white; padding:8px; border:1px solid var(--line); border-radius:8px; box-shadow:0 12px 30px #15263e12; z-index:30; }
+.site-menu nav a { display:block; background:white; font-size:15px; padding:12px; }
+.site-menu nav a:hover,.site-menu nav a[aria-current="page"] { background:#edf2f7; color:var(--navy); }
+summary:focus-visible { outline:3px solid #8ca5c9; outline-offset:4px; }
+.home { padding:36px 0 56px; }
+.ranking { display:flex; justify-content:space-between; align-items:center; gap:24px; padding-bottom:26px; border-bottom:1px solid var(--line); }
+.home-ranks { gap:32px; }
+.home-ranks > div { gap:10px; }
+.home-ranks strong { font-size:38px; letter-spacing:-1px; }
+.home-ranks span { font-size:17px; }
+.ranking-caption { margin:0; max-width:225px; text-align:right; line-height:1.5; }
+.catalog-heading { margin:26px 0 20px; font-size:22px; font-weight:600; color:var(--navy); }
+.directory-grid { gap:26px 24px; }
+.catalog-card { display:block; text-decoration:none; min-width:0; border-radius:9px; }
+.tile-art { height:176px; border-radius:9px; display:flex; align-items:center; justify-content:center; padding:24px; overflow:hidden; border:1px solid #132b4310; transition:border-color .15s,transform .15s; }
+.catalog-card:hover .tile-art { border-color:#7c8ca0; transform:translateY(-2px); }
+.tile-label { display:flex; justify-content:space-between; align-items:center; gap:6px; margin-top:11px; font-size:17px; font-weight:600; color:var(--navy); }
+.tile-label b { font-size:20px; font-weight:400; color:#617083; }
+.art-about { background:#e9eef5; gap:22px; }
+.art-about img { width:108px; height:82px; object-fit:contain; background:white; border-radius:5px; }
+.school-year { font-size:34px; letter-spacing:-1px; font-weight:600; color:#304663; line-height:1.1; }
+.school-year small { display:block; font-size:12px; font-weight:400; letter-spacing:0; margin-bottom:7px; }
+.art-achievements { background:#f0ece4; gap:14px; align-items:end; padding-bottom:27px; }
+.result-slip { width:92px; background:#fffefa; border-top:3px solid #aaaeb5; padding:14px; color:#4b5260; box-shadow:0 4px 10px #463b2010; }
+.result-slip:last-child { border-color:#b68a61; color:#8b603c; transform:translateY(8px); }
+.result-slip strong { display:block; font-size:39px; font-weight:400; line-height:1.1; }
+.result-slip small { font-size:11px; }
+.art-sports { background:#e5eeea; }
+.score-sheet { width:100%; color:#2d5148; }
+.score-sheet > div { display:flex; justify-content:space-between; align-items:center; gap:14px; padding:8px 0; }
+.score-sheet > div + div { border-top:1px solid #2d514830; }
+.score-sheet strong { font-size:29px; font-weight:500; }
+.score-sheet span { font-size:14px; }
+.art-schedule { background:#e7eef8; }
+.mini-schedule { width:100%; max-width:240px; background:#fff; border-radius:5px; padding:10px 14px; box-shadow:0 4px 12px #314e7410; }
+.mini-schedule div { display:grid; grid-template-columns:48px 1fr; gap:10px; padding:7px 0; font-size:12px; }
+.mini-schedule div + div { border-top:1px solid #e6ebf2; }
+.mini-schedule b { color:#355b86; font-variant-numeric:tabular-nums; }
+.art-students { background:#eeeaf3; }
+.mini-resources { width:100%; max-width:235px; display:grid; gap:6px; }
+.mini-resources span { display:flex; justify-content:space-between; background:#ffffffd9; border:1px solid #72648018; padding:9px 12px; border-radius:4px; font-size:12px; color:#514364; }
+.mini-resources b { font-weight:400; }
+.art-contacts { background:#f3eae4; color:#825b46; gap:15px; }
+.address-number { font-size:64px; line-height:1; font-weight:500; letter-spacing:-3px; }
+.address-street { padding-left:15px; border-left:1px solid #825b4638; font-size:13px; line-height:1.7; }
+.breadcrumb { padding-top:24px; font-size:14px; }
+.breadcrumb a { display:inline-flex; align-items:center; min-height:44px; text-decoration:none; color:#4c5b6e; }
+.breadcrumb a:hover { text-decoration:underline; }
+.page-section { padding:22px 0 56px; border:0; min-height:calc(100vh - 276px); }
+.page-section h1 { font-size:32px; font-weight:600; line-height:1.2; letter-spacing:-.5px; color:var(--navy); margin:0 0 12px; }
+.page-section .section-head { display:block; margin-bottom:30px; padding-bottom:24px; border-bottom:2px solid var(--accent); }
+.page-section .section-head p { font-size:15px; }
+.page-achievements { --accent:#ad916b; }
+.page-sports { --accent:#557d6a; }
+.page-schedule { --accent:#5577a5; }
+.page-students { --accent:#867098; }
+.page-contacts { --accent:#aa8067; }
+.achievement-list { border-top:0; }
+.achievement-row:first-child { padding-top:0; }
+.achievement-row { grid-template-columns:240px minmax(0,1fr); }
+.sport-card { border-radius:8px; background:#fff; border-top:3px solid var(--accent); }
+.sport-card h3 { font-size:22px; }
+.team-place strong { font-size:36px; color:#315748; }
+.schedule-box { border-radius:8px; overflow:hidden; background:white; }
+.schedule-row:nth-child(5) time { color:#385f93; }
+.week-box { background:#edf2f8; }
+.student-links { background:white; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+.resource { padding:22px 24px; }
+.resource:last-child { border-bottom:0; }
+.resource:hover { background:#f5f3f8; }
+.resource > b { font-size:22px; }
+.contact-card { background:#fff; border:1px solid var(--line); border-radius:8px; padding:24px; }
+.contact-line:last-child { border-bottom:0; }
+.about-content { display:grid; grid-template-columns:1.6fr 1fr; gap:48px; }
+.about-copy { max-width:640px; }
+.about-facts { margin:0; border-top:1px solid var(--line); }
+.about-facts > div { padding:14px 0; border-bottom:1px solid var(--line); }
+.about-facts dt { color:var(--muted); font-size:13px; }
+.about-facts dd { margin:4px 0 0; font-weight:600; }
+.inline-link { display:inline-flex; min-height:44px; align-items:center; color:var(--accent); text-underline-offset:4px; }
+.page-bottom { margin-top:36px; padding-top:20px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:12px 28px; }
+.page-bottom a { min-height:44px; display:inline-flex; align-items:center; color:#4c5b6e; text-underline-offset:4px; font-size:14px; }
+footer { background:white; color:var(--muted); border-top:1px solid var(--line); padding:24px 0; }
+.footer-inner { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; font-size:13px; }
+.footer-inner a { min-height:44px; display:inline-flex; align-items:center; text-underline-offset:4px; }
+@media(max-width:800px) {
+ .ranking { display:block; }
+ .ranking-caption { max-width:none; text-align:left; margin-top:10px; }
+ .tile-art { padding:18px; }
+ .art-about { gap:12px; }
+ .art-about img { width:86px; }
+ .school-year { font-size:26px; }
+ .about-content { grid-template-columns:1fr; gap:24px; }
+}
+@media(max-width:640px) {
+ .wrap { width:calc(100% - 32px); }
+ .header-inner { min-height:82px; gap:12px; padding:10px 0; }
+ .brand { gap:7px; }
+ .brand img { width:48px; height:43px; }
+ .brand strong { font-size:14px; line-height:1.3; }
+ .brand span span { font-size:11px; }
+ .site-menu summary { padding:10px; min-height:44px; gap:6px; font-size:12px; }
+ .site-menu summary::after { font-size:15px; }
+ .home { padding:24px 0 36px; }
+ .home-ranks { gap:32px; }
+ .home-ranks > div { display:block; }
+ .home-ranks strong { font-size:32px; }
+ .home-ranks span { font-size:14px; }
+ .ranking { padding-bottom:20px; }
+ .ranking-caption { font-size:12px; }
+ .catalog-heading { font-size:19px; margin:20px 0 16px; }
+ .directory-grid { gap:22px 12px; }
+ .tile-art { height:140px; padding:14px; }
+ .tile-label { margin-top:8px; font-size:14px; }
+ .tile-label b { font-size:17px; }
+ .art-about { flex-direction:column; gap:5px; }
+ .art-about img { width:82px; height:54px; }
+ .school-year { font-size:18px; letter-spacing:0; }
+ .school-year small { display:inline; margin-right:6px; font-size:10px; }
+ .art-achievements { gap:8px; padding-bottom:24px; }
+ .result-slip { width:56px; padding:10px; }
+ .result-slip strong { font-size:29px; }
+ .result-slip small { font-size:9px; }
+ .score-sheet strong { font-size:23px; }
+ .score-sheet span { font-size:11px; }
+ .mini-schedule { padding:7px 8px; }
+ .mini-schedule div { font-size:10px; grid-template-columns:32px 1fr; gap:5px; }
+ .mini-resources span { padding:7px 8px; font-size:10px; }
+ .art-contacts { flex-direction:column; gap:4px; }
+ .address-number { font-size:47px; letter-spacing:-2px; }
+ .address-street { border:0; padding:0; text-align:center; font-size:10px; }
+ .address-street br { display:none; }
+ .breadcrumb { padding-top:12px; }
+ .page-section { padding-top:14px; }
+ .page-section h1 { font-size:27px; }
+ .page-section .section-head { padding-bottom:20px; margin-bottom:24px; }
+ .page-section .section-head p { font-size:14px; }
+ .achievement-row { grid-template-columns:1fr; gap:12px; }
+ .schedule-row { grid-template-columns:1fr; gap:5px; padding:16px 0; font-size:16px; }
+ .schedule-row time { font-size:14px; color:#456182; }
+ .schedule-list { padding-inline:20px; }
+ .resource { padding:20px; }
+ .resource span span { font-size:14px; }
+ .archive-heading h3 { font-size:18px; }
+ .contact-card { padding:20px; }
+ .footer-inner { font-size:12px; }
+}
+@media(prefers-reduced-motion:reduce) { .tile-art { transition:none; } .catalog-card:hover .tile-art { transform:none; } }
