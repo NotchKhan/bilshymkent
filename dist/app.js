@@ -1,4 +1,6 @@
 (() => {
+const introLoader=document.getElementById("intro-loader");
+if(introLoader){const started=performance.now();const dismiss=()=>{const wait=Math.max(0,1300-(performance.now()-started));window.setTimeout(()=>{introLoader.classList.add("is-leaving");window.setTimeout(()=>introLoader.remove(),360);},wait);};if(document.readyState==="complete")dismiss();else window.addEventListener("load",dismiss,{once:true});}
 const textTranslations=new Map([
 ["Перейти к содержанию","Негізгі мазмұнға өту"],["Лицей для юношей · Шымкент","Ұлдарға арналған лицей · Шымкент"],
 ["О лицее","Лицей туралы"],["Достижения","Жетістіктер"],["Ученикам","Оқушыларға"],["Расписание","Кесте"],["События","Іс-шаралар"],["Ещё","Тағы"],
